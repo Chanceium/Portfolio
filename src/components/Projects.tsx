@@ -14,7 +14,7 @@ const Projects = () => {
       title: "eBookShelf",
       description: "A self-hosted platform for hosting and managing your eBook collection, built with React, TypeScript, and PocketBase.",
       tags: ["React", "Vite", "ExpressJS", "TypeScript", "Docker", "PocketBase"],
-      image: "public/eBookShelf.png",
+      image: "https://raw.githubusercontent.com/Chanceium/eBookShelf/refs/heads/main/public/logo.png",
       url: "https://github.com/Chanceium/eBookShelf",
     },
     {
