@@ -36,7 +36,7 @@ const Skills = () => {
               <h3 className="text-xl font-bold mb-4">{area.title}</h3>
               <ul className="space-y-2">
                 {area.skills.map((skill, skillIndex) => (
-                  <li key={skillIndex} className="text-gray-600">
+                  <li key={skillIndex} className="text-foreground">
                     {skill}
                   </li>
                 ))}

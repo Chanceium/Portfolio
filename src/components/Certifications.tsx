@@ -32,7 +32,7 @@ const Certifications = () => {
                 <Award className="w-8 h-8 text-primary-darker" />
                 <div>
                   <h3 className="font-bold">{cert.name}</h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-muted-foreground">
                     {cert.issuer} • {cert.date}
                   </p>
                 </div>

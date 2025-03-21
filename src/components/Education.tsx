@@ -104,7 +104,7 @@ const Education = () => {
                   <h4 className="text-lg font-semibold text-primary-darker mb-2">
                     {school.degree}
                   </h4>
-                  <p className="text-gray-600">{school.period}</p>
+                  <p className="text-muted-foreground">{school.period}</p>
                 </div>
               </div>
               <Accordion type="single" collapsible className="w-full">
@@ -119,11 +119,11 @@ const Education = () => {
                           <AccordionItem key={courseIndex} value={`course-${index}-${semesterIndex}-${courseIndex}`}>
                             <AccordionTrigger className="text-left ml-4 flex justify-between items-center">
                               <span className="flex-grow">{course.name}</span>
-                              <span className="text-sm text-gray-500">({course.code})</span>
+                              <span className="text-sm text-muted-foreground">({course.code})</span>
                             </AccordionTrigger>
                             <AccordionContent>
                               <div className="ml-8 mt-2">
-                                <p className="text-gray-600">{course.description}</p>
+                                <p className="text-foreground">{course.description}</p>
                               </div>
                             </AccordionContent>
                           </AccordionItem>

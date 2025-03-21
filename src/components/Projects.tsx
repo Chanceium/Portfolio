@@ -91,12 +91,12 @@ const Projects = () => {
                   <ExternalLink className="w-5 h-5 text-primary-darker" />
                 </a>
               </div>
-              <p className="text-gray-600 mb-4">{project.description}</p>
+              <p className="text-foreground mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag, tagIndex) => (
                   <span
                     key={tagIndex}
-                    className="px-3 py-1 bg-secondary text-sm rounded-full"
+                    className="px-3 py-1 bg-secondary text-secondary-foreground text-sm rounded-full"
                   >
                     {tag}
                   </span>
