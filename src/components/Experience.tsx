@@ -1,6 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Badge } from "@/components/ui/badge";
+import { Calendar, Building, ChevronRight } from "lucide-react";
 
 const Experience = () => {
   const jobs = [
@@ -55,6 +57,13 @@ const Experience = () => {
     },
   ];
 
+  // Skills associated with each job for visual badges
+  const jobSkills = [
+    ["PowerApps", "Power Automate", "IT Support", "Project Management", "Innovation"],
+    ["Network Infrastructure", "Documentation", "Hardware", "Data Centers", "Security"],
+    ["GIS", "GPS", "CAD", "ArcGIS", "Technical Documentation"]
+  ];
+
   return (
     <section id="experience" className="py-20">
       <div className="container">
@@ -63,28 +72,51 @@ const Experience = () => {
         </h2>
         <div className="space-y-8">
           {jobs.map((job, index) => (
-            <Card key={index} className="p-6 animate-fade-in">
+            <Card key={index} className="p-6 animate-fade-in overflow-hidden group hover:shadow-lg transition-all duration-300">
               <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <LazyLoadImage
-                  src={job.image}
-                  alt={`${job.company}`}
-                  className="w-full h-48 object-cover rounded-lg"
-                />
-                <div>
-                  <h3 className="text-xl font-bold mb-2">{job.title}</h3>
-                  <h4 className="text-lg font-semibold text-primary-darker mb-2">
-                    {job.company}
-                  </h4>
-                  <p className="text-muted-foreground">{job.dates}</p>
+                <div className="relative overflow-hidden rounded-lg">
+                  <LazyLoadImage
+                    src={job.image}
+                    alt={`${job.company}`}
+                    className="w-full h-48 object-cover rounded-lg transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                    <h4 className="text-white font-semibold">{job.company}</h4>
+                  </div>
+                </div>
+                
+                <div className="flex flex-col justify-center">
+                  <h3 className="text-xl font-bold mb-2 flex items-center">
+                    <span className="mr-2">{job.title}</span>
+                  </h3>
+                  
+                  <div className="flex items-center mb-3 text-muted-foreground">
+                    <Calendar className="h-4 w-4 mr-2" />
+                    <span>{job.dates}</span>
+                  </div>
+                  
+                  <div className="flex items-center mb-4 text-muted-foreground">
+                    <Building className="h-4 w-4 mr-2" />
+                    <span>{job.company}</span>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {jobSkills[index].map((skill, i) => (
+                      <Badge key={i} variant="secondary" className="font-normal">
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
               </div>
+              
               <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value={`item-${index}`}>
-                  <AccordionTrigger className="text-left">
-                    Job Description
+                <AccordionItem value={`item-${index}`} className="border border-border rounded-md">
+                  <AccordionTrigger className="text-left px-4 py-3 hover:bg-secondary/50 transition-colors">
+                    <span className="font-medium">View Details</span>
                   </AccordionTrigger>
-                  <AccordionContent>
-                    <p className="text-foreground" dangerouslySetInnerHTML={{ __html: job.description }}></p>
+                  <AccordionContent className="px-4 py-4 bg-secondary/20">
+                    <div className="text-foreground prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: job.description }}></div>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
