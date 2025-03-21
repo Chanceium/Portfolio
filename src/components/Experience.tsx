@@ -75,7 +75,7 @@ const Experience = () => {
                   <h4 className="text-lg font-semibold text-primary-darker mb-2">
                     {job.company}
                   </h4>
-                  <p className="text-gray-600">{job.dates}</p>
+                  <p className="text-muted-foreground">{job.dates}</p>
                 </div>
               </div>
               <Accordion type="single" collapsible className="w-full">
@@ -84,7 +84,7 @@ const Experience = () => {
                     Job Description
                   </AccordionTrigger>
                   <AccordionContent>
-                    <p className="text-gray-600" dangerouslySetInnerHTML={{ __html: job.description }}></p>
+                    <p className="text-foreground" dangerouslySetInnerHTML={{ __html: job.description }}></p>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
