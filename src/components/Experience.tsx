@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Building, ChevronRight } from "lucide-react";
+import { Calendar, Building, ChevronRight, FileText, HardDrive, Tool, BookOpen, ClipboardCheck, Lightbulb, Zap, CheckCircle, Users, MapPin, Star } from "lucide-react";
 
 const Experience = () => {
   const jobs = [
@@ -116,7 +116,66 @@ const Experience = () => {
                     <span className="font-medium">View Details</span>
                   </AccordionTrigger>
                   <AccordionContent className="px-4 py-4 bg-secondary/20">
-                    <div className="text-foreground prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: job.description }}></div>
+                    <div className="space-y-6 text-foreground">
+                      {/* Introduction */}
+                      <p className="text-foreground">{job.description.split('<br><br>')[0]}</p>
+                      
+                      {/* Key Responsibilities Section */}
+                      <div>
+                        <h4 className="font-semibold text-lg mb-4 border-b pb-2">Key Responsibilities</h4>
+                        <div className="grid gap-4 md:grid-cols-2">
+                          {/* Extract and display responsibilities with icons */}
+                          {job.description.includes('<strong>') && 
+                            job.description
+                              .split('<br><br>')
+                              .slice(2)
+                              .map((point, i) => {
+                                if (!point.includes('<strong>')) return null;
+                                const title = point.split('<strong>')[1].split('</strong>')[0];
+                                const content = point.split('</strong>:')[1];
+                                
+                                return (
+                                  <div key={i} className="flex bg-white dark:bg-secondary p-3 rounded-lg hover:shadow-md transition-shadow">
+                                    <div className="mr-3 p-2 bg-primary/10 rounded-full flex-shrink-0">
+                                      {/* Icon based on title keywords */}
+                                      {title.includes('Documentation') && <FileText className="h-5 w-5 text-primary" />}
+                                      {title.includes('Hardware') && <HardDrive className="h-5 w-5 text-primary" />}
+                                      {title.includes('Technical') && <Tool className="h-5 w-5 text-primary" />}
+                                      {title.includes('Knowledge') && <BookOpen className="h-5 w-5 text-primary" />}
+                                      {title.includes('Standard') && <ClipboardCheck className="h-5 w-5 text-primary" />}
+                                      {title.includes('Innovative') && <Lightbulb className="h-5 w-5 text-primary" />}
+                                      {title.includes('Automation') && <Zap className="h-5 w-5 text-primary" />}
+                                      {title.includes('Resolving') && <CheckCircle className="h-5 w-5 text-primary" />}
+                                      {title.includes('Leadership') && <Users className="h-5 w-5 text-primary" />}
+                                      {title.includes('GPS') && <MapPin className="h-5 w-5 text-primary" />}
+                                      {/* Default icon */}
+                                      {!title.match(/Documentation|Hardware|Technical|Knowledge|Standard|Innovative|Automation|Resolving|Leadership|GPS/) && 
+                                        <Star className="h-5 w-5 text-primary" />
+                                      }
+                                    </div>
+                                    <div>
+                                      <h5 className="font-medium mb-1">{title}</h5>
+                                      <p className="text-sm">{content}</p>
+                                    </div>
+                                  </div>
+                                );
+                              })
+                          }
+                        </div>
+                      </div>
+                      
+                      {/* Skills Used Section */}
+                      <div>
+                        <h4 className="font-semibold text-md mb-3">Skills Applied</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {jobSkills[index].map((skill, i) => (
+                            <Badge key={i} variant="outline" className="px-3 py-1 bg-primary/5">
+                              {skill}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
