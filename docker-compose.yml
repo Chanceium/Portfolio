@@ -1,6 +1,6 @@
 services:
     viteportfolio:
-      image: viteportfolio:latest
+      image: viteportfolio:0-latest
       ports:
         - "5173:8080"
       deploy:
