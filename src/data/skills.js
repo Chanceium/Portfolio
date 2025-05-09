@@ -28,7 +28,7 @@ export const skills = [
       { name: "Active Directory", level: "Advanced", icon: "ri-server-fill", color: "text-indigo-600" },
       { name: "Microsoft Entra ID", level: "Intermediate", icon: "ri-cloud-line", color: "text-blue-700" },
       { name: "Endpoint Manager", level: "Advanced", icon: "ri-computer-line", color: "text-teal-600" },
-      { name: "Power Apps", level: "Advanced", icon: "ri-apps-2-line", color: "text-purple-600" },
+      { name: "Power Apps", level: "Expert", icon: "ri-apps-2-line", color: "text-purple-600" },
       { name: "Power BI", level: "Intermediate", icon: "ri-bar-chart-box-line", color: "text-yellow-600" }
     ]
   },
@@ -46,6 +46,8 @@ export const skills = [
     category: "Frameworks",
     items: [
       { name: "Node.js", level: "Intermediate", icon: "ri-code-box-line", color: "text-green-600" },
+      { name: "Vite.js", level: "Intermediate", icon: "ri-code-box-line", color: "text-green-500" },
+      { name: "React.js", level: "Intermediate", icon: "ri-code-box-line", color: "text-green-500" },
       { name: "Astro.js", level: "Intermediate", icon: "ri-rocket-line", color: "text-purple-500" }
     ]
   },

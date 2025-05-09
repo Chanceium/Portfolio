@@ -1,29 +1,5 @@
 ---
-import { skills,skillsSection } from "../data/skills.js";
-
-// Convert Tailwind color classes to CSS color values
-function tailwindToColor(colorClass) {
-  const colorMap = {
-    "text-blue-500": "#3b82f6",
-    "text-blue-400": "#60a5fa",
-    "text-blue-600": "#2563eb",
-    "text-blue-700": "#1d4ed8",
-    "text-green-500": "#22c55e",
-    "text-green-600": "#16a34a",
-    "text-red-500": "#ef4444",
-    "text-red-600": "#dc2626",
-    "text-yellow-500": "#eab308",
-    "text-yellow-600": "#ca8a04",
-    "text-purple-500": "#a855f7",
-    "text-purple-600": "#9333ea",
-    "text-orange-500": "#f97316",
-    "text-orange-600": "#ea580c",
-    "text-teal-600": "#0d9488",
-    "text-indigo-600": "#4f46e5",
-    "text-emerald-600": "#059669",
-  };
-  return colorMap[colorClass] || "#000000";
-}
+import { skills, skillsSection } from "../data/skills.js";
 ---
 
 <section id="skills" class="py-20 bg-white">
@@ -49,14 +25,14 @@ function tailwindToColor(colorClass) {
               <div class="flex items-center justify-between group hover:bg-neutral-50 p-2 rounded-lg transition-colors">
                 <div class="flex items-center gap-3">
                   <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-neutral-100 group-hover:scale-110 transition-transform duration-300">
-                    <i class={skill.icon + " text-xl"} style={`color: ${tailwindToColor(skill.color)}`}></i>
+                    <i class={skill.icon + " text-xl"} style={`color: ${(skill.color)}`}></i>
                   </div>
                   <span class="font-medium">{skill.name}</span>
                 </div>
-                <span class={`text-sm px-3 py-1 rounded-full ${
-                  skill.level === 'Expert' ? 'bg-primary-100 text-primary-700' :
-                  skill.level === 'Advanced' ? 'bg-secondary-100 text-secondary-700' :
-                  'bg-neutral-100 text-neutral-700'
+                <span class={`text-sm px-3 py-1 rounded-full font-medium ${
+                  skill.level === 'Expert' ? 'bg-[#2563eb] text-white' :
+                  skill.level === 'Advanced' ? 'bg-[#059669] text-white' :
+                  'bg-[#525252] text-white'
                 }`}>
                   {skill.level}
                 </span>
