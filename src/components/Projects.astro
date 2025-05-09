@@ -30,11 +30,11 @@ import { projects,projectsSection } from "../data/projects.js";
           
           <div class="p-6 flex-1 flex flex-col">
             <h3 class="text-xl font-bold mb-2 group-hover:text-primary-600 transition-colors">{project.title}</h3>
-            <p class="text-neutral-600 mb-4 flex-grow">{project.description}</p>
+            <p class="text-neutral-600 mb-4">{project.description}</p>
             
             <div class="flex flex-wrap gap-2 mb-4">
               {project.tags.map((tag) => (
-                <span class="text-xs bg-neutral-100 text-neutral-700 py-1 px-2 rounded-full">
+                <span class="inline-block text-xs bg-neutral-100 text-neutral-700 py-1 px-3 rounded-full font-medium">
                   {tag}
                 </span>
               ))}
@@ -47,44 +47,6 @@ import { projects,projectsSection } from "../data/projects.js";
                   <li class="text-sm">{highlight}</li>
                 ))}
               </ul>
-              
-              <div class="flex gap-3 mt-4">
-                {project.links.github && (
-                  <a 
-                    href={project.links.github} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    class="text-neutral-700 hover:text-primary-600 transition-colors"
-                    aria-label="View GitHub repository"
-                  >
-                    <i class="ri-github-fill text-xl"></i>
-                  </a>
-                )}
-                
-                {project.links.live && (
-                  <a 
-                    href={project.links.live} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    class="text-neutral-700 hover:text-primary-600 transition-colors"
-                    aria-label="View live project"
-                  >
-                    <i class="ri-external-link-line text-xl"></i>
-                  </a>
-                )}
-                
-                {project.links.paper && (
-                  <a 
-                    href={project.links.paper} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    class="text-neutral-700 hover:text-primary-600 transition-colors"
-                    aria-label="View research paper"
-                  >
-                    <i class="ri-file-paper-2-line text-xl"></i>
-                  </a>
-                )}
-              </div>
             </div>
           </div>
         </div>

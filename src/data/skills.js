@@ -35,9 +35,9 @@ export const skills = [
   {
     category: "Programming Languages",
     items: [
-      { name: "Python", level: "Advanced", icon: "ri-python-line", color: "text-blue-500" },
-      { name: "JavaScript", level: "Intermediate", icon: "ri-javascript-line", color: "text-yellow-500" },
-      { name: "TypeScript", level: "Intermediate", icon: "ri-typescript-line", color: "text-blue-600" },
+      { name: "Python", level: "Advanced", icon: "ri-code-s-slash-line", color: "text-blue-500" },
+      { name: "JavaScript", level: "Intermediate", icon: "ri-code-s-slash-line", color: "text-yellow-500" },
+      { name: "TypeScript", level: "Intermediate", icon: "ri-code-s-slash-line", color: "text-blue-600" },
       { name: "Java", level: "Advanced", icon: "ri-code-s-slash-line", color: "text-red-500" },
       { name: "HTML/CSS", level: "Advanced", icon: "ri-html5-line", color: "text-orange-600" }
     ]
@@ -45,7 +45,7 @@ export const skills = [
   {
     category: "Frameworks",
     items: [
-      { name: "Node.js", level: "Intermediate", icon: "ri-nodejs-line", color: "text-green-600" },
+      { name: "Node.js", level: "Intermediate", icon: "ri-code-box-line", color: "text-green-600" },
       { name: "Astro.js", level: "Intermediate", icon: "ri-rocket-line", color: "text-purple-500" }
     ]
   },
@@ -68,7 +68,7 @@ export const skills = [
   {
     category: "Containerization & Orchestration",
     items: [
-      { name: "Docker", level: "Intermediate", icon: "ri-docker-line", color: "text-blue-500" },
+      { name: "Docker", level: "Intermediate", icon: "ri-box-3-line", color: "text-blue-500" },
       { name: "Kubernetes", level: "Intermediate", icon: "ri-ship-line", color: "text-blue-600" }
     ]
   },
