@@ -1,0 +1,70 @@
+---
+import { skills,skillsSection } from "../data/skills.js";
+
+// Convert Tailwind color classes to CSS color values
+function tailwindToColor(colorClass) {
+  const colorMap = {
+    "text-blue-500": "#3b82f6",
+    "text-blue-400": "#60a5fa",
+    "text-blue-600": "#2563eb",
+    "text-blue-700": "#1d4ed8",
+    "text-green-500": "#22c55e",
+    "text-green-600": "#16a34a",
+    "text-red-500": "#ef4444",
+    "text-red-600": "#dc2626",
+    "text-yellow-500": "#eab308",
+    "text-yellow-600": "#ca8a04",
+    "text-purple-500": "#a855f7",
+    "text-purple-600": "#9333ea",
+    "text-orange-500": "#f97316",
+    "text-orange-600": "#ea580c",
+    "text-teal-600": "#0d9488",
+    "text-indigo-600": "#4f46e5",
+    "text-emerald-600": "#059669",
+  };
+  return colorMap[colorClass] || "#000000";
+}
+---
+
+<section id="skills" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="section-title" data-aos="fade-up">Skills</h2>
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+      {skillsSection.subtitle}
+    </p>
+
+    <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+      {skills.map((category, categoryIndex) => (
+        <div 
+          class="bg-white rounded-xl shadow-sm border border-neutral-100 overflow-hidden"
+          data-aos="fade-up"
+          data-aos-delay={100 * categoryIndex}
+        >
+          <div class="p-5 border-b border-neutral-100">
+            <h3 class="text-xl font-bold">{category.category}</h3>
+          </div>
+          
+          <div class="p-5 space-y-4">
+            {category.items.map((skill) => (
+              <div class="flex items-center justify-between group hover:bg-neutral-50 p-2 rounded-lg transition-colors">
+                <div class="flex items-center gap-3">
+                  <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-neutral-100 group-hover:scale-110 transition-transform duration-300">
+                    <i class={skill.icon + " text-xl"} style={`color: ${tailwindToColor(skill.color)}`}></i>
+                  </div>
+                  <span class="font-medium">{skill.name}</span>
+                </div>
+                <span class={`text-sm px-3 py-1 rounded-full ${
+                  skill.level === 'Expert' ? 'bg-primary-100 text-primary-700' :
+                  skill.level === 'Advanced' ? 'bg-secondary-100 text-secondary-700' :
+                  'bg-neutral-100 text-neutral-700'
+                }`}>
+                  {skill.level}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

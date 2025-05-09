@@ -1,0 +1,80 @@
+---
+import { experience,experienceSection } from "../data/experience.js";
+---
+
+<section id="experience" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="section-title" data-aos="fade-up">Work Experience</h2>
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+      {experienceSection.subtitle}
+    </p>
+
+    <div class="relative mt-16">
+      <!-- Timeline Line -->
+      <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-neutral-200 transform md:-translate-x-1/2"></div>
+      
+      <!-- Experience Items -->
+      {experience.map((job, index) => (
+        <div 
+          class={`relative flex flex-col md:flex-row gap-8 mb-16 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+          data-aos={index % 2 === 0 ? 'fade-left' : 'fade-right'}
+          data-aos-delay={100 * index}
+        >
+          <!-- Timeline Circle -->
+          <div class="absolute left-0 md:left-1/2 top-0 w-8 h-8 bg-white rounded-full border-4 border-primary-500 transform -translate-x-1/2 md:-translate-x-1/2 z-10"></div>
+          
+          <!-- Content -->
+          <div class="md:w-1/2 ml-10 md:ml-0 md:px-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-neutral-100 hover:shadow-md transition-shadow duration-300">
+              {job.logo && (
+                <div class="mb-4 flex justify-center">
+                  <img 
+                    src={job.logo} 
+                    alt={`${job.company} logo`} 
+                    class="max-h-16 max-w-full object-contain"
+                  />
+                </div>
+              )}
+              
+              <div class="flex flex-col mb-4">
+                <h3 class="text-xl font-bold">{job.position}</h3>
+                <p class={`font-medium ${'text-primary-600'}`}>{job.company}</p>
+              </div>
+              
+              <div class="flex items-center mb-4 text-neutral-600 text-sm">
+                {job.location && (
+                  <div class="flex items-center mr-4">
+                    <i class="ri-map-pin-line mr-1"></i>
+                    <span>{job.location}</span>
+                  </div>
+                )}
+                <div class="flex items-center">
+                  <i class="ri-calendar-line mr-1"></i>
+                  <span>{job.duration}</span>
+                </div>
+              </div>
+              
+              {!job.duration.includes("Current") && job.description && (
+                <p class="text-neutral-700 mb-4">{job.description}</p>
+              )}
+              
+              {!job.duration.includes("Current") && job.highlights && job.highlights.length > 0 && (
+                <div class="mt-4">
+                  <h4 class="font-medium text-neutral-800 mb-2">Key Achievements:</h4>
+                  <ul class="list-disc list-inside space-y-1 text-neutral-600">
+                    {job.highlights.map((highlight) => (
+                      <li>{highlight}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+          
+          <!-- Empty Spacer for alternating layout -->
+          <div class="hidden md:block md:w-1/2"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

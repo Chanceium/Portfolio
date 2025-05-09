@@ -1,0 +1,94 @@
+---
+import { projects,projectsSection } from "../data/projects.js";
+---
+
+<section id="projects" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="section-title" data-aos="fade-up">Projects</h2>
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+      {projectsSection.subtitle}
+    </p>
+
+    <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project, index) => (
+        <div 
+          class="rounded-xl shadow-sm border border-neutral-100 overflow-hidden bg-white hover:shadow-md transition-all duration-300 group h-full flex flex-col"
+          data-aos="fade-up"
+          data-aos-delay={100 * index}
+        >
+          <div class="relative overflow-hidden h-56">
+            <img 
+              src={project.image} 
+              alt={project.title}
+              class="w-full h-full object-contain bg-neutral-50 transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-sm">
+              <i class={`${project.icon} text-xl ${project.color}`}></i>
+            </div>
+          </div>
+          
+          <div class="p-6 flex-1 flex flex-col">
+            <h3 class="text-xl font-bold mb-2 group-hover:text-primary-600 transition-colors">{project.title}</h3>
+            <p class="text-neutral-600 mb-4 flex-grow">{project.description}</p>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+              {project.tags.map((tag) => (
+                <span class="text-xs bg-neutral-100 text-neutral-700 py-1 px-2 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <div class="mt-auto">
+              <h4 class="font-medium text-neutral-800 mb-2">Key Features:</h4>
+              <ul class="list-disc list-inside space-y-1 text-neutral-600 mb-4">
+                {project.highlights.map((highlight) => (
+                  <li class="text-sm">{highlight}</li>
+                ))}
+              </ul>
+              
+              <div class="flex gap-3 mt-4">
+                {project.links.github && (
+                  <a 
+                    href={project.links.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="text-neutral-700 hover:text-primary-600 transition-colors"
+                    aria-label="View GitHub repository"
+                  >
+                    <i class="ri-github-fill text-xl"></i>
+                  </a>
+                )}
+                
+                {project.links.live && (
+                  <a 
+                    href={project.links.live} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="text-neutral-700 hover:text-primary-600 transition-colors"
+                    aria-label="View live project"
+                  >
+                    <i class="ri-external-link-line text-xl"></i>
+                  </a>
+                )}
+                
+                {project.links.paper && (
+                  <a 
+                    href={project.links.paper} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="text-neutral-700 hover:text-primary-600 transition-colors"
+                    aria-label="View research paper"
+                  >
+                    <i class="ri-file-paper-2-line text-xl"></i>
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

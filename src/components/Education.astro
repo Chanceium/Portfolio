@@ -1,0 +1,128 @@
+---
+import { education,educationSection } from "../data/education.js";
+---
+
+<section id="education" class="py-20 bg-neutral-50">
+  <div class="container mx-auto px-4">
+    <h2 class="section-title" data-aos="fade-up">Education</h2>
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+      {educationSection.subtitle}
+    </p>
+
+    <div class="mt-16 space-y-16">
+      {education.map((school, index) => (
+        <div class="bg-white rounded-xl shadow-sm border border-neutral-100 overflow-hidden" data-aos="fade-up" data-aos-delay={100 * index}>
+          <div class="p-6 border-b border-neutral-100">
+            <div class="flex items-start md:items-center flex-col md:flex-row gap-4 md:gap-6">
+              <div class={`flex items-center justify-center w-16 h-16 rounded-full bg-neutral-100 text-3xl ${school.color}`}>
+                {school.logoType === 'image' ? (
+                  <img src={school.logo} alt={`${school.school} logo`} class="w-24 h-24 object-contain" />
+                ) : (
+                  <i class={school.logo}></i>
+                )}
+              </div>
+              
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold">{school.school}</h3>
+                <p class="text-primary-600 font-medium">{school.degree}</p>
+                
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2 text-neutral-600 text-sm">
+                  <div class="flex items-center">
+                    <i class="ri-map-pin-line mr-1"></i>
+                    <span>{school.location}</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="ri-calendar-line mr-1"></i>
+                    <span>{school.duration}</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="ri-medal-line mr-1"></i>
+                    <span>GPA: {school.gpa}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-0">
+            <div class="border-b border-neutral-100">
+              <div class="flex overflow-x-auto scrollbar-hide" id={`school-tabs-${index}`}>
+                {school.semesters.map((semester, semesterIndex) => (
+                  <button 
+                    class={`semester-tab py-3 px-6 font-medium min-w-max whitespace-nowrap transition-colors ${semesterIndex === 0 ? 'text-primary-600 border-b-2 border-primary-600' : 'text-neutral-600 hover:text-primary-600'}`}
+                    data-target={`school-${index}-semester-${semesterIndex}`}
+                    data-school={index}
+                  >
+                    {semester.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+            
+            <div class="p-6">
+              {school.semesters.map((semester, semesterIndex) => (
+                <div 
+                  id={`school-${index}-semester-${semesterIndex}`} 
+                  class={`semester-content ${semesterIndex === 0 ? 'block' : 'hidden'}`}
+                >
+                  <div class="space-y-6">
+                    {semester.courses.map((course) => (
+                      <div class="p-4 rounded-lg bg-neutral-50 hover:bg-neutral-100 transition-colors">
+                        <div class="flex justify-between items-start mb-2">
+                          <h4 class="font-bold text-lg">{course.title}</h4>
+                          <span class="text-sm bg-primary-100 text-primary-800 py-1 px-2 rounded font-mono">{course.code}</span>
+                        </div>
+                        <p class="text-neutral-600">{course.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.semester-tab');
+    
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const schoolIndex = tab.getAttribute('data-school');
+        const targetId = tab.getAttribute('data-target');
+        
+        // Hide all content for this school
+        document.querySelectorAll(`.semester-content[id^="school-${schoolIndex}"]`).forEach(content => {
+          content.classList.add('hidden');
+        });
+        
+        // Show target content
+        document.getElementById(targetId)?.classList.remove('hidden');
+        
+        // Update active tab styles
+        document.querySelectorAll(`#school-tabs-${schoolIndex} .semester-tab`).forEach(t => {
+          t.classList.remove('text-primary-600', 'border-b-2', 'border-primary-600');
+          t.classList.add('text-neutral-600');
+        });
+        
+        tab.classList.remove('text-neutral-600');
+        tab.classList.add('text-primary-600', 'border-b-2', 'border-primary-600');
+      });
+    });
+  });
+</script>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

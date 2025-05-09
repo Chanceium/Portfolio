@@ -1,0 +1,53 @@
+---
+import { certifications,certificationsSection } from "../data/certifications.js";
+---
+
+<section id="certifications" class="py-20 bg-neutral-50">
+  <div class="container mx-auto px-4">
+    <h2 class="section-title" data-aos="fade-up">Certifications</h2>
+    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+      {certificationsSection.subtitle}
+    </p>
+
+    <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {certifications.map((cert, index) => (
+        <div 
+          class="bg-white rounded-xl shadow-sm border border-neutral-100 p-6 hover:shadow-md transition-shadow duration-300 group"
+          data-aos="fade-up"
+          data-aos-delay={50 * index}
+        >
+          <div class="flex items-start gap-4">
+            <div class={`flex items-center justify-center w-12 h-12 rounded-full bg-neutral-100 ${cert.color} group-hover:scale-110 transition-transform duration-300`}>
+              <i class={`${cert.icon} text-xl`}></i>
+            </div>
+            
+            <div class="flex-1">
+              <h3 class="text-lg font-bold mb-1 group-hover:text-primary-600 transition-colors">{cert.name}</h3>
+              <p class="text-neutral-600 mb-3">{cert.issuer}</p>
+              
+              <div class="flex items-center gap-3 text-sm text-neutral-500 mb-4">
+                <div class="flex items-center">
+                  <i class="ri-calendar-line mr-1"></i>
+                  <span>{cert.date}</span>
+                </div>
+                
+                <div class="flex items-center">
+                  <i class="ri-fingerprint-line mr-1"></i>
+                  <span class="font-mono">{cert.credentialId}</span>
+                </div>
+              </div>
+              
+              <div class="flex flex-wrap gap-2">
+                {cert.skills.map((skill) => (
+                  <span class="text-xs bg-neutral-100 text-neutral-700 py-1 px-2 rounded-full">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

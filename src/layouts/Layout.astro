@@ -1,0 +1,183 @@
+---
+import "../styles/global.css";
+import { portfolio } from "../data/portfolio";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = portfolio.personal?.fullName,
+  description = portfolio.description,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/svg+xml" href={portfolio.personal.image} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  </head>
+  <body class="bg-neutral-50 text-neutral-900">
+    <header id="main-header" class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-sm safe-top transition-all duration-300">
+      <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="#" class="text-xl font-bold text-primary-600 flex items-center hover:scale-105 transition-transform">
+          <span class="bg-primary-600 text-black p-1 rounded-md mr-2">Portfolio</span>
+        </a>
+        <div class="hidden md:flex gap-6">
+          <a href="#hero" class="nav-link relative py-2 px-1 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary-600 after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full hover:font-bold hover:scale-110 transition-all duration-300">Home</a>
+          <a href="#experience" class="nav-link relative py-2 px-1 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary-600 after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full hover:font-bold hover:scale-110 transition-all duration-300">Experience</a>
+          <a href="#education" class="nav-link relative py-2 px-1 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary-600 after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full hover:font-bold hover:scale-110 transition-all duration-300">Education</a>
+          <a href="#skills" class="nav-link relative py-2 px-1 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary-600 after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full hover:font-bold hover:scale-110 transition-all duration-300">Skills</a>
+          <a href="#certifications" class="nav-link relative py-2 px-1 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary-600 after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full hover:font-bold hover:scale-110 transition-all duration-300">Certifications</a>
+          <a href="#projects" class="nav-link relative py-2 px-1 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary-600 after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full hover:font-bold hover:scale-110 transition-all duration-300">Projects</a>
+        </div>
+        <button id="menu-button" class="md:hidden text-2xl p-2 hover:bg-neutral-100 rounded-full transition-colors duration-300">
+          <i class="ri-menu-line"></i>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center gap-6 transform translate-x-full transition-transform duration-300 safe-top safe-bottom">
+        <button id="close-menu" class="absolute top-4 right-4 text-2xl p-2 hover:bg-neutral-100 rounded-full transition-colors">
+          <i class="ri-close-line"></i>
+        </button>
+        <a href="#hero" class="mobile-nav-link text-xl font-medium hover:text-primary-600 hover:font-bold hover:scale-110 transition-all duration-300 py-2">Home</a>
+        <a href="#experience" class="mobile-nav-link text-xl font-medium hover:text-primary-600 hover:font-bold hover:scale-110 transition-all duration-300 py-2">Experience</a>
+        <a href="#education" class="mobile-nav-link text-xl font-medium hover:text-primary-600 hover:font-bold hover:scale-110 transition-all duration-300 py-2">Education</a>
+        <a href="#skills" class="mobile-nav-link text-xl font-medium hover:text-primary-600 hover:font-bold hover:scale-110 transition-all duration-300 py-2">Skills</a>
+        <a href="#certifications" class="mobile-nav-link text-xl font-medium hover:text-primary-600 hover:font-bold hover:scale-110 transition-all duration-300 py-2">Certifications</a>
+        <a href="#projects" class="mobile-nav-link text-xl font-medium hover:text-primary-600 hover:font-bold hover:scale-110 transition-all duration-300 py-2">Projects</a>
+      </div>
+    </header>
+    
+    <main>
+      <slot />
+    </main>
+    
+    <footer class="bg-black text-white py-12 safe-bottom">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div class="text-center md:text-left">
+            <h3 class="text-white text-xl font-bold mb-2">{portfolio.personal?.fullName}</h3>
+            <p class="text-white opacity-80">© {new Date().getFullYear()} All Rights Reserved</p>
+          </div>
+          <div class="flex gap-6">
+            <a href={portfolio.social.linkedin} class="text-2xl hover:text-primary-500 transition-colors p-2">
+              <i class="ri-linkedin-box-fill"></i>
+            </a>
+            <a href={portfolio.social.github} class="text-2xl hover:text-primary-500 transition-colors p-2">
+              <i class="ri-github-fill"></i>
+            </a>
+            <a href={portfolio.social.twitter} class="text-2xl hover:text-primary-500 transition-colors p-2">
+              <i class="ri-twitter-x-fill"></i>
+            </a>
+            <a href={portfolio.social.mail} class="text-2xl hover:text-primary-500 transition-colors p-2">
+              <i class="ri-mail-fill"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script is:inline src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      // Mobile menu functionality
+      const menuButton = document.getElementById('menu-button');
+      const closeMenu = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+      const header = document.getElementById('main-header');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      menuButton?.addEventListener('click', () => {
+        mobileMenu?.classList.remove('translate-x-full');
+        document.body.style.overflow = 'hidden';
+      });
+
+      closeMenu?.addEventListener('click', () => {
+        mobileMenu?.classList.add('translate-x-full');
+        document.body.style.overflow = 'auto';
+      });
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu?.classList.add('translate-x-full');
+          document.body.style.overflow = 'auto';
+        });
+      });
+
+      // Shrink header on scroll
+      let lastScrollY = 0;
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        // Add shrink class when scrolling down
+        if (currentScrollY > 100) {
+          header?.classList.add('py-1');
+          header?.classList.add('shadow-md');
+        } else {
+          header?.classList.remove('py-1');
+          header?.classList.remove('shadow-md');
+        }
+        
+        // Hide header when scrolling down, show when scrolling up
+        if (currentScrollY > lastScrollY && currentScrollY > 300) {
+          header?.classList.add('-translate-y-full');
+        } else {
+          header?.classList.remove('-translate-y-full');
+        }
+        
+        lastScrollY = currentScrollY;
+      });
+
+      // Active link highlighting
+      const sections = document.querySelectorAll('section[id]');
+      
+      function highlightNavigation() {
+        const scrollY = window.scrollY;
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 100;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.getAttribute('id');
+          
+          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            // Find matching nav links and add active class
+            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.add('text-primary-600');
+            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.add('font-medium');
+            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.add('after:w-full');
+          } else {
+            // Remove active class
+            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.remove('text-primary-600');
+            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.remove('font-medium');
+            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.remove('after:w-full');
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', highlightNavigation);
+
+      // Initialize AOS after the library is loaded
+      window.addEventListener('load', () => {
+        AOS.init({
+          duration: 800,
+          easing: 'ease-out',
+          once: true,
+          disable: window.innerWidth < 768
+        });
+        
+        // Initial highlighting
+        highlightNavigation();
+      });
+    </script>
+  </body>
+</html>
