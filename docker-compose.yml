@@ -1,0 +1,10 @@
+services:
+    viteportfolio:
+      image: viteportfolio:0-latest
+      ports:
+        - "5173:4321"
+      deploy:
+        restart_policy:
+          condition: any
+  
+  
