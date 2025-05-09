@@ -1,15 +1,29 @@
-FROM node
+# Build stage
+FROM node:lts-alpine as build
 
 WORKDIR /app
 
-COPY package.json . 
+# Copy package files and install dependencies
+COPY package.json package-lock.json* ./
+RUN npm ci
 
-RUN npm install
-
+# Copy all files
 COPY . .
 
-## EXPOSE 4321
+# Build the application
+RUN npm run build
 
-EXPOSE 4321
+# Production stage
+FROM nginx:alpine
 
-CMD ["npm", "run", "dev"]
+# Copy built assets from the build stage
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# Copy nginx configuration if needed
+# COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expose port
+EXPOSE 80
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
