@@ -15,9 +15,9 @@ export const portfolio = {
   
   // Social media links
   social: {
-    github: "https://github.com/",
-    linkedin: "https://linkedin.com/",
-    twitter: "https://twitter.com/",
+    github: "https://github.com/chanceium",
+    linkedin: "https://linkedin.com/in/chancepage",
+    twitter: "https://x.com/chanceiume",
     mail: "mailto:chance@chancepage.me"
   }
 };
