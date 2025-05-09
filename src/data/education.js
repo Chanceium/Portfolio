@@ -84,27 +84,27 @@ export const education = [
           {
             code: "COSC3P94",
             title: "Human Computer Interaction",
-            description: "Interaction between Humans and User Experiences/Interfaces"
+            description: "This course introduced me to the principles of designing effective human-computer interfaces, covering user modeling, task analysis, and goal-oriented design principles. I gained hands-on experience through a multi-stage group project implementing a functional interface prototype while learning to evaluate interfaces critically from a user-centered perspective."
           },
           {
             code: "COSC2P05",
             title: "Programming Languages",
-            description: "Introduction to different programming languages."
+            description: "This course covered fundamental concepts of programming languages including syntax, semantics, program translation, and programming paradigms across imperative, functional, logic, and object-oriented approaches. I studied control structures, data types, multi-threading, and abstraction mechanisms, gaining a deeper understanding of language design principles."
           },
           {
             code: "COSC4P50",
             title: "Introduction to Cybersecurity",
-            description: "Basic concepts in cybersecurity."
+            description: "This course provided a comprehensive overview of cybersecurity, covering both offensive techniques like reconnaissance and exploitation, and defensive measures including firewalls and encryption. Through hands-on labs, I gained practical experience with Linux and various security tools to identify vulnerabilities and implement defensive strategies for software, web, and network security."
           },
           {
             code: "COSC3P91",
             title: "Advanced Object-Oriented Programming",
-            description: "Advanced concepts in object-oriented programming."
+            description: "In this course, I deepened my understanding of object-oriented programming using Java to develop applications with GUIs, animation, networking, and client-server architecture. I gained practical experience with Java APIs including AWT, Swing, I/O, and multi-threading while learning OO design principles through game development as a contextual framework."
           },
           {
             code: "COSC4P78",
-            title: "Robotics",
-            description: "Introduction to robotics and automation."
+            title: "Introduction to Robotics",
+            description: "This course introduced me to robotics fundamentals covering sensors, actuators, effectors, stability, kinematics, and control architectures used in modern robotic systems. The later part focused on advanced topics like localization, mapping, and computer vision techniques essential for autonomous robot navigation, providing hands-on experience with real-world robotics challenges."
           }
         ]
       }
