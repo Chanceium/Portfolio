@@ -70,7 +70,7 @@ export const skills = [
   {
     category: "Containerization & Orchestration",
     items: [
-      { name: "Docker", level: "Intermediate", icon: "ri-box-3-line", color: "text-blue-500" },
+      { name: "Docker", level: "Expert", icon: "ri-box-3-line", color: "text-blue-500" },
       { name: "Kubernetes", level: "Intermediate", icon: "ri-ship-line", color: "text-blue-600" }
     ]
   },
