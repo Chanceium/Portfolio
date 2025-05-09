@@ -58,12 +58,12 @@ const {
           <a href="#certifications" class="nav-link relative py-2 px-1 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary-600 after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full hover:font-bold hover:scale-110 transition-all duration-300">Certifications</a>
           <a href="#projects" class="nav-link relative py-2 px-1 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary-600 after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full hover:font-bold hover:scale-110 transition-all duration-300">Projects</a>
         </div>
-        <button id="menu-button" class="md:hidden text-2xl p-2 hover:bg-neutral-100 rounded-full transition-colors duration-300">
+        <button id="menu-button" aria-label="Toggle menu" class="md:hidden text-2xl p-2 hover:bg-neutral-100 rounded-full transition-colors duration-300">
           <i class="ri-menu-line"></i>
         </button>
       </nav>
-      <div id="mobile-menu" class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center gap-6 transform translate-x-full transition-transform duration-300 safe-top safe-bottom">
-        <button id="close-menu" class="absolute top-4 right-4 text-2xl p-2 hover:bg-neutral-100 rounded-full transition-colors">
+      <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-white z-50 flex flex-col items-center justify-center gap-6 transform translate-x-full transition-transform duration-300">
+        <button id="close-menu" aria-label="Close menu" class="absolute top-4 right-4 text-2xl p-2 hover:bg-neutral-100 rounded-full transition-colors">
           <i class="ri-close-line"></i>
         </button>
         <a href="#hero" class="mobile-nav-link text-xl font-medium hover:text-primary-600 hover:font-bold hover:scale-110 transition-all duration-300 py-2">Home</a>
@@ -106,84 +106,95 @@ const {
 
     <script is:inline src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-      // Mobile menu functionality
-      const menuButton = document.getElementById('menu-button');
-      const closeMenu = document.getElementById('close-menu');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-      const header = document.getElementById('main-header');
-      const navLinks = document.querySelectorAll('.nav-link');
+      document.addEventListener('DOMContentLoaded', () => {
+        // Mobile menu functionality
+        const menuButton = document.getElementById('menu-button');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        const header = document.getElementById('main-header');
+        const navLinks = document.querySelectorAll('.nav-link');
 
-      menuButton?.addEventListener('click', () => {
-        mobileMenu?.classList.remove('translate-x-full');
-        document.body.style.overflow = 'hidden';
-      });
-
-      closeMenu?.addEventListener('click', () => {
-        mobileMenu?.classList.add('translate-x-full');
-        document.body.style.overflow = 'auto';
-      });
-
-      mobileLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-          mobileMenu?.classList.add('translate-x-full');
-          document.body.style.overflow = 'auto';
-        });
-      });
-
-      // Shrink header on scroll
-      let lastScrollY = 0;
-      window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-        
-        // Add shrink class when scrolling down
-        if (currentScrollY > 100) {
-          header?.classList.add('py-1');
-          header?.classList.add('shadow-md');
-        } else {
-          header?.classList.remove('py-1');
-          header?.classList.remove('shadow-md');
-        }
-        
-        // Hide header when scrolling down, show when scrolling up
-        if (currentScrollY > lastScrollY && currentScrollY > 300) {
-          header?.classList.add('-translate-y-full');
-        } else {
-          header?.classList.remove('-translate-y-full');
-        }
-        
-        lastScrollY = currentScrollY;
-      });
-
-      // Active link highlighting
-      const sections = document.querySelectorAll('section[id]');
-      
-      function highlightNavigation() {
-        const scrollY = window.scrollY;
-        
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop - 100;
-          const sectionHeight = section.offsetHeight;
-          const sectionId = section.getAttribute('id');
-          
-          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-            // Find matching nav links and add active class
-            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.add('text-primary-600');
-            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.add('font-medium');
-            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.add('after:w-full');
+        // Toggle mobile menu
+        const toggleMenu = (show) => {
+          if (show) {
+            mobileMenu.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
           } else {
-            // Remove active class
-            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.remove('text-primary-600');
-            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.remove('font-medium');
-            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.remove('after:w-full');
+            mobileMenu.classList.add('translate-x-full');
+            document.body.style.overflow = '';
           }
-        });
-      }
-      
-      window.addEventListener('scroll', highlightNavigation);
+        };
 
-      // Initialize AOS after the library is loaded
-      window.addEventListener('load', () => {
+        menuButton?.addEventListener('click', () => toggleMenu(true));
+        closeMenu?.addEventListener('click', () => toggleMenu(false));
+
+        mobileLinks.forEach((link) => {
+          link.addEventListener('click', () => toggleMenu(false));
+        });
+
+        // Shrink header on scroll
+        let lastScrollY = 0;
+        const handleScroll = () => {
+          const currentScrollY = window.scrollY;
+          
+          // Add shrink class when scrolling down
+          if (currentScrollY > 100) {
+            header?.classList.add('py-1');
+            header?.classList.add('shadow-md');
+          } else {
+            header?.classList.remove('py-1');
+            header?.classList.remove('shadow-md');
+          }
+          
+          // Hide header when scrolling down, show when scrolling up
+          if (currentScrollY > lastScrollY && currentScrollY > 300) {
+            header?.classList.add('-translate-y-full');
+          } else {
+            header?.classList.remove('-translate-y-full');
+          }
+          
+          lastScrollY = currentScrollY;
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Active link highlighting
+        const sections = document.querySelectorAll('section[id]');
+        
+        function highlightNavigation() {
+          const scrollY = window.scrollY + 100; // Offset for header height
+          
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+              // Find matching nav links and add active class
+              document.querySelectorAll(`.nav-link[href="#${sectionId}"], .mobile-nav-link[href="#${sectionId}"]`).forEach(link => {
+                link.classList.add('text-primary-600');
+                link.classList.add('font-medium');
+                if (link.classList.contains('nav-link')) {
+                  link.classList.add('after:w-full');
+                }
+              });
+            } else {
+              // Remove active class
+              document.querySelectorAll(`.nav-link[href="#${sectionId}"], .mobile-nav-link[href="#${sectionId}"]`).forEach(link => {
+                link.classList.remove('text-primary-600');
+                link.classList.remove('font-medium');
+                if (link.classList.contains('nav-link')) {
+                  link.classList.remove('after:w-full');
+                }
+              });
+            }
+          });
+        }
+        
+        window.addEventListener('scroll', highlightNavigation);
+
+        // Initialize AOS
         AOS.init({
           duration: 800,
           easing: 'ease-out',
