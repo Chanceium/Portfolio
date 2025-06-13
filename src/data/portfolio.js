@@ -10,7 +10,7 @@ export const portfolio = {
     email: "chance@chancepage.me",
     location: "Thorold, Ontario, Canada",
     tagline: "Available for freelance work",
-    image: "https://media.licdn.com/dms/image/v2/D5603AQFCvxfzNMD4yg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1696629934850?e=1752105600&v=beta&t=Gk4M7_8AKyghG3BdXYmWgIFR2mvKYE2p01wpgmX_pCo"
+    image: "public/profile.jpg"
   },
   
   // Social media links
