@@ -10,7 +10,7 @@ export const portfolio = {
     email: "chance@chancepage.ca",
     location: "Thorold, Ontario, Canada",
     tagline: "Available for freelance work",
-    image: "public/profile.jpg"
+    image: "profile.jpg"
   },
   
   // Social media links
