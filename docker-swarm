@@ -1,0 +1,9 @@
+services:
+  portfolio:
+    image: portfolio:latest
+    ports:
+      - "5173:80"
+    deploy:
+      restart_policy:
+        condition: any
+      replicas: 1
