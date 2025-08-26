@@ -20,16 +20,19 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build Docker image
+      - name: Build and push Docker image
         run: |
+          # Lowercase repository namespace
           REPO_LOWER=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
-          IMAGE_TAG=ghcr.io/$REPO_LOWER/portfolio:$(date +%s)
+          
+          # Build image with timestamp tag
+          TIMESTAMP=$(date +%s)
+          IMAGE_TAG="ghcr.io/$REPO_LOWER:$TIMESTAMP"
           docker build -t $IMAGE_TAG .
-          docker tag $IMAGE_TAG ghcr.io/$REPO_LOWER/portfolio:latest
-          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
-
-      - name: Push Docker image
-        run: |
-          REPO_LOWER=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
-          docker push ghcr.io/$REPO_LOWER/portfolio:latest
+          
+          # Tag as latest
+          docker tag $IMAGE_TAG ghcr.io/$REPO_LOWER:latest
+          
+          # Push both tags
           docker push $IMAGE_TAG
+          docker push ghcr.io/$REPO_LOWER:latest
