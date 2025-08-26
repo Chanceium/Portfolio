@@ -1,6 +1,6 @@
 services:
   portfolio:
-    image: portfolio:latest
+    image: ghcr.io/Chanceium/portfolio:latest
     ports:
       - "5173:80"
     deploy:
