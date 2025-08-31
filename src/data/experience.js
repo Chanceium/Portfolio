@@ -15,7 +15,7 @@ export const experience = [
       "Provision and maintain Linux-based cloud environments (Ubuntu/Amazon Linux/Oracle Linux), ensuring optimal performance and security",
       "Implement infrastructure as code using Terraform and AWS CloudFormation for reproducible deployments"
     ],
-    logo: "", // Add Vertmix logo URL if available
+    logo: "https://www.vertmix.com/images/vertmix-logo.svg",
     color: "text-purple-500"
   },
   {
