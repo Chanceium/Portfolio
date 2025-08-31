@@ -56,7 +56,6 @@ import { experience,experienceSection } from "../data/experience.js";
               
               {!job.duration.includes("Current") && job.highlights && job.highlights.length > 0 && (
                 <div class="mt-4">
-                  <h4 class="font-medium text-neutral-800 mb-2">Key Achievements:</h4>
                   <ul class="list-disc list-inside space-y-1 text-neutral-600">
                     {job.highlights.map((highlight) => (
                       <li>{highlight}</li>
