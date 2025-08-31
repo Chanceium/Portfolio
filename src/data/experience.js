@@ -3,26 +3,46 @@ export const experienceSection = {
 };
 export const experience = [
   {
+    company: "Vertmix",
+    position: "Infrastructure & DevOps Engineer",
+    location: "Toronto, Ontario, Canada",
+    duration: "Jun 2025 - Present",
+    description: "Deploy and manage scalable web applications on AWS and Oracle Cloud infrastructure, leveraging multi-cloud strategies.",
+    highlights: [
+      "Deploy and manage scalable web applications on AWS and Oracle Cloud infrastructure, leveraging multi-cloud strategies",
+      "Develop full-stack applications using Python and PHP, delivering custom solutions for diverse client requirements",
+      "Automate CI/CD pipelines using GitHub Actions, reducing deployment time by 70% and improving release reliability",
+      "Provision and maintain Linux-based cloud environments (Ubuntu/Amazon Linux/Oracle Linux), ensuring optimal performance and security",
+      "Implement infrastructure as code using Terraform and AWS CloudFormation for reproducible deployments"
+    ],
+    logo: "", // Add Vertmix logo URL if available
+    color: "text-purple-500"
+  },
+  {
     company: "Execulink Telecom",
     position: "LAN Systems Administrator",
-    location: "Woodstock, Ontario",
-    duration: "April 2025 - Current",
-    description: "",
-    highlights: [],
+    location: "Woodstock, Ontario, Canada",
+    duration: "Apr 2025 - Aug 2025",
+    description: "Architected and deployed full-stack Docker-based inventory and ordering system using Django, Python, HTML/CSS, and Bootstrap, serving entire company.",
+    highlights: [
+      "Architected and deployed full-stack Docker-based inventory and ordering system using Django, Python, HTML/CSS, and Bootstrap, serving entire company",
+      "Implemented Microsoft AD-based role authentication and authorization, streamlining user access workflows and enhancing security",
+      "Developed real-time reporting dashboards that improved inventory visibility and reduced cost overruns by providing actionable insights"
+    ],
     logo: "https://www.execulink.ca/wp-content/uploads/2023/01/logo.svg",
     color: "text-blue-500"
   },
   {
     company: "Execulink Telecom",
     position: "LAN Systems Administrator",
-    location: "Woodstock, Ontario",
-    duration: "April 2024 - Sept 2024",
-    description: "As a LAN Systems Administrator, I led the development of innovative solutions and provided top-notch IT support.",
+    location: "Woodstock, Ontario, Canada",
+    duration: "Apr 2024 - Sep 2024",
+    description: "Led development of innovative solutions and provided comprehensive IT support across multiple departments.",
     highlights: [
-      "Developed a Power Apps application for the warehouse team, revolutionizing the process of receiving orders from outside tech teams with 90% efficiency improvement",
-      "Utilized Power Automate to streamline tasks across departments, integrating it with data archiving and routing data requests through Power Apps",
-      "Swiftly addressed and fixed a variety of technical problems to ensure seamless office operations",
-      "Independently led and executed complex projects from start to finish, demonstrating project leadership and development skills"
+      "Developed Power Apps application that revolutionized warehouse order processing, managing 800+ items in two months and boosting efficiency by 90%",
+      "Automated cross-departmental workflows using Power Automate, integrating data archiving and routing systems to enhance security and efficiency",
+      "Led end-to-end implementation of complex IT projects independently, from requirements gathering to production deployment",
+      "Resolved 50+ critical IT tickets weekly, maintaining seamless operations across multiple departments"
     ],
     logo: "https://www.execulink.ca/wp-content/uploads/2023/01/logo.svg",
     color: "text-blue-500"

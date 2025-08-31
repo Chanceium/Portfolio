@@ -45,6 +45,7 @@ export const skills = [
   {
     category: "Frameworks",
     items: [
+      { name: "Django", level: "Advanced", icon: "ri-code-box-line", color: "text-green-700" },
       { name: "Node.js", level: "Intermediate", icon: "ri-code-box-line", color: "text-green-600" },
       { name: "Vite.js", level: "Intermediate", icon: "ri-code-box-line", color: "text-green-500" },
       { name: "React.js", level: "Intermediate", icon: "ri-code-box-line", color: "text-green-500" },
@@ -63,7 +64,7 @@ export const skills = [
     category: "Cloud Platforms",
     items: [
       { name: "AWS", level: "Intermediate", icon: "ri-amazon-line", color: "text-orange-500" },
-      { name: "Microsoft Azure", level: "Advanced", icon: "ri-microsoft-line", color: "text-blue-500" },
+      { name: "Microsoft Azure", level: "Intermediate", icon: "ri-microsoft-line", color: "text-blue-500" },
       { name: "Oracle Cloud", level: "Intermediate", icon: "ri-cloud-line", color: "text-red-600" }
     ]
   },
@@ -78,9 +79,9 @@ export const skills = [
     category: "DevOps & IaC",
     items: [
       { name: "CI/CD Pipelines", level: "Advanced", icon: "ri-loop-left-line", color: "text-green-600" },
+      { name: "Git", level: "Advanced", icon: "ri-git-branch-line", color: "text-orange-600" },
       { name: "Terraform", level: "Intermediate", icon: "ri-planet-line", color: "text-purple-600" },
-      { name: "Ansible", level: "Intermediate", icon: "ri-terminal-box-line", color: "text-red-500" },
-      { name: "Git", level: "Advanced", icon: "ri-git-branch-line", color: "text-orange-600" }
+      { name: "Ansible", level: "Intermediate", icon: "ri-terminal-box-line", color: "text-red-500" }
     ]
   }
 ];
